@@ -17,6 +17,10 @@ function ListItem(props) {
         setDone(!done);
     }
 
+    function handleClick() {
+        props.onDelete(props.goalId);
+    }
+
     return (
         <Card>
             <CardContent>
@@ -24,7 +28,7 @@ function ListItem(props) {
                     control={<Checkbox checked={done} onChange={handleChange} name="goal" />}
                     label={props.goalName}
                 />
-                <IconButton aria-label="delete">
+                <IconButton aria-label="delete" onClick={handleClick}>
                     <DeleteIcon />
                 </IconButton>
             </CardContent>

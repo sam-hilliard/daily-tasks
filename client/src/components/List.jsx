@@ -11,10 +11,18 @@ import AddItem from './AddItem';
 
 function List() {
 
-    const [items, setItems] = useState([]);
+    const [goals, setGoals] = useState([]);
 
-    function addItem(item) {
-        setItems([...items, item]);
+    function addGoal(goal) {
+        setGoals([...goals, goal]);
+    }
+
+    function deleteGoal(id) {
+        setGoals(
+            goals.filter((goal) => {
+                return goal.id !== id;
+            })
+        );
     }
 
     return(
@@ -23,13 +31,12 @@ function List() {
              <Typography variant="h4" gutterBottom>
                 Goals
             </Typography>
-            <ListItem goalName="Awesome task"/>
 
-            {items.map((item) => {
-                return <ListItem goalName={item} />
+            {goals.map((goal) => {
+                return <ListItem key={goal.id} goalId={goal.id} goalName={goal.name} onDelete={deleteGoal} />;
             })}
 
-            <AddItem onAdd={addItem}/>
+            <AddItem onAdd={addGoal}/>
             </CardContent>
         </Card>
     );
