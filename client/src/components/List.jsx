@@ -1,7 +1,9 @@
 import React from 'react';
 
 // material ui
-import { Card, CardContent, Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 import ListItem from './ListItem';
 
@@ -12,9 +14,7 @@ function List() {
              <Typography variant="h4" gutterBottom>
                 Goals
             </Typography>
-            <div>
-                <ListItem goalName="Awesome task"/>
-            </div>
+            <ListItem goalName="Awesome task"/>
             </CardContent>
         </Card>
     );

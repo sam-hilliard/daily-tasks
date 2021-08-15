@@ -1,3 +1,5 @@
+import React from 'react';
+
 // styles
 import '../styles/App.css';
 
@@ -11,11 +13,13 @@ import List from './List';
 
 function App() {
   return (
-    <Container maxWidth="sm">
+    <div>
         <Header />
-        <List />
+        <Container maxWidth="sm">
+            <List />
+        </Container>
         <Footer />
-    </Container>
+    </div>
   );
 }
 
