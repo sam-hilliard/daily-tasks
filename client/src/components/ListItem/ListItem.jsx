@@ -13,12 +13,12 @@ function ListItem(props) {
 
     const [done, setDone] = useState(false);
 
-    function handleChange() {
-        setDone(!done);
+    function handleChange(event) {
+        setDone(event.target.checked);
     }
 
     function handleClick() {
-        props.onDelete(props.goalId);
+        props.onDelete(props.id);
     }
 
     return (

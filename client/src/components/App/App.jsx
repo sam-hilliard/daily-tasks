@@ -1,15 +1,12 @@
 import React from 'react';
 
-// styles
-import '../styles/App.css';
-
 // material ui
 import { Container } from '@material-ui/core';
 
 // custom components
-import Header from './Header';
-import Footer from './Footer';
-import List from './List';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import List from '../List/List';
 
 function App() {
   return (

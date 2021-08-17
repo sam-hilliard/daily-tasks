@@ -11,11 +11,11 @@ function AddItem(props) {
     const [inputText, setInputText] = useState('');
 
     function handleChange(event) {
-        event.preventDefault();
         setInputText(event.target.value);
     }
 
-    function handleClick() {
+    function handleSubmit(event) {
+        event.preventDefault();
         if (inputText) {
             const goal = {
                 id: uuidv4(),
@@ -28,9 +28,9 @@ function AddItem(props) {
     }
 
     return (
-    <form noValidate autoComplete="off">
+    <form onSubmit={handleSubmit} noValidate autoComplete="off" action={void(0)}>
         <TextField onChange={handleChange} value={inputText} label="New Item" />
-        <Fab onClick={handleClick} color="secondary" aria-label="add">
+        <Fab onClick={handleSubmit} color="secondary" aria-label="add">
             <AddIcon />
         </Fab>   
     </form>
