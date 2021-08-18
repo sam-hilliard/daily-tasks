@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { Container, Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+
+// styles
+import './Footer.css';
 
 function Footer() {
     return (
         <footer>
-            <Container maxWidth="sm">
-                <Typography variant="subtitle1" gutterBottom>
-                    Developed by Sam Hilliard
-                </Typography>
-            </Container>
+            <Typography variant="subtitle1" gutterBottom>
+                Developed by Sam Hilliard
+            </Typography>
         </footer>
     );
 }

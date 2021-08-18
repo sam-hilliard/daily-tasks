@@ -2,12 +2,25 @@ import React from 'react';
 import { useState } from 'react';
 
 // material ui
-import Card from '@material-ui/core/Card';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import CardContent from '@material-ui/core/CardContent';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Typography from '@material-ui/core/Typography';
+
+// styles
+import { withStyles } from '@material-ui/core/styles';
+import { grey } from '@material-ui/core/colors';
+import './ListItem.css';
+
+const GreyChecbox = withStyles({
+    root: {
+      color: grey[400],
+      '&$checked': {
+        color: grey[600],
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
 
 function ListItem(props) {
 
@@ -22,17 +35,15 @@ function ListItem(props) {
     }
 
     return (
-        <Card>
-            <CardContent>
-                <FormControlLabel
-                    control={<Checkbox checked={done} onChange={handleChange} name="goal" />}
-                    label={props.goalName}
-                />
-                <IconButton aria-label="delete" onClick={handleClick}>
-                    <DeleteIcon />
-                </IconButton>
-            </CardContent>
-        </Card>
+        <div className={!done ? "item-body" : "item-body complete"}>
+            <GreyChecbox checked={done} onChange={handleChange} name="goal" />
+            <Typography>
+                {props.goalName}
+            </Typography>
+            <IconButton aria-label="delete" onClick={handleClick}>
+                <DeleteIcon />
+            </IconButton>
+        </div>
     );
 }
 

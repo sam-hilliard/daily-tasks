@@ -32,14 +32,17 @@ function List() {
 
     return(
         <StylesProvider injectFirst>
-            <Card variant="outlined" className="list-body">
-                <CardContent>
+            <Card>
+                <CardContent className="list-body">
                     
                     <Typography variant="h4" gutterBottom>
                         Goals
                     </Typography>
 
                     <Grid container direction="column" justifyContent="space-between" alignItems="center" spacing={2}>
+                        <Grid item>
+                            <ListItem id={-1} goalName="just a lil test" onDelete={deleteGoal} />
+                        </Grid>
                         {goals.map((goal) => {
                             return(
                                 <Grid item key={goal.id}>

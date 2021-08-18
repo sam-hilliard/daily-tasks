@@ -1,0 +1,18 @@
+.item-body {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.item-body > * {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.complete {
+    background: #b2bec3;
+}
+
+.complete > p {
+    text-decoration: line-through;
+}

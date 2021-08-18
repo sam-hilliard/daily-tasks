@@ -1,15 +1,17 @@
 import React from 'react';
 
-import { Container, Typography } from '@material-ui/core';
+// material ui
+import Typography from '@material-ui/core/Typography';
+
+// styles
+import './Header.css';
 
 function Header() {
     return (
         <header>
-            <Container maxWidth="sm">
-                <Typography variant="h3" gutterBottom>
-                    Daily Goal Tracker
-                </Typography>
-            </Container>
+            <Typography variant="h3" gutterBottom>
+                Daily Goal Tracker
+            </Typography>
         </header>
     );
 }
