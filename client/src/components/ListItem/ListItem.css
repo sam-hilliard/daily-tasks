@@ -1,7 +1,6 @@
 .item-body {
-    background-color: white;
-    border-radius: 10px;
-    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
 .item-body > * {
@@ -9,10 +8,7 @@
     margin: 0 20px;
 }
 
-.complete {
-    background: #b2bec3;
-}
-
 .complete > p {
     text-decoration: line-through;
+    color: #dfe6e9;
 }

@@ -7,6 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 
+// custom components
+import StreakCounter from '../StreakCounter/StreakCounter';
+
 // styles
 import { withStyles } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
@@ -40,6 +43,7 @@ function ListItem(props) {
             <Typography>
                 {props.goalName}
             </Typography>
+            <StreakCounter />
             <IconButton aria-label="delete" onClick={handleClick}>
                 <DeleteIcon />
             </IconButton>
