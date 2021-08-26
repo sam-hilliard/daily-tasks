@@ -1,0 +1,15 @@
+.streak-counter {
+    position: relative;
+    top: 2px;
+}
+
+.streak-counter > * {
+    display: inline-block;
+    margin: 0 2px;
+
+}
+
+.streak-counter > svg {
+    position: relative;
+    top: 5px;
+}

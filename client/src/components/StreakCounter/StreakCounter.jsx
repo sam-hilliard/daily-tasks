@@ -4,7 +4,7 @@ import { useState } from 'react';
 // material ui
 import FastForwardIcon from '@material-ui/icons/FastForward';
 import Typography from '@material-ui/core/Typography';
-import { Container } from '@material-ui/core';
+import './StreakCounter.css';
 
 
 function StreakCounter() {
@@ -12,7 +12,7 @@ function StreakCounter() {
     const [days, setDays] = useState(0);
 
     return(
-        <div>
+        <div className="streak-counter">
             <FastForwardIcon />
             <Typography>{days}</Typography>
         </div>
