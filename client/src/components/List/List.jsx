@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // material ui
 import Card from '@material-ui/core/Card';
@@ -18,20 +19,18 @@ function List() {
 
     const [goals, setGoals] = useState([]);
 
-    function getGoals() {
-        
-    }
+    useEffect(() => {
+        axios.get('/api/goals').then((response) => {
+            setGoals(response.data);
+        });
+    }, []);
 
     function addGoal(goal) {
-        setGoals([...goals, goal]);
+        axios.post();
     }
 
     function deleteGoal(id) {
-        setGoals(
-            goals.filter((goal) => {
-                return goal.id !== id;
-            })
-        );
+        
     }
 
     return(
@@ -44,13 +43,10 @@ function List() {
                     </Typography>
 
                     <Grid container direction="column" justifyContent="space-between" alignItems="center" spacing={2}>
-                        <Grid item>
-                            <ListItem id={-1} goalName="just a lil test" onDelete={deleteGoal} />
-                        </Grid>
                         {goals.map((goal) => {
                             return(
-                                <Grid item key={goal.id}>
-                                    <ListItem id={goal.id} goalName={goal.name} onDelete={deleteGoal} />
+                                <Grid item key={goal._id}>
+                                    <ListItem id={goal._id} goalName={goal.name} onDelete={deleteGoal} />
                                 </Grid>
                             );
                         })}
