@@ -18,6 +18,10 @@ function List() {
 
     const [goals, setGoals] = useState([]);
 
+    function getGoals() {
+        
+    }
+
     function addGoal(goal) {
         setGoals([...goals, goal]);
     }
