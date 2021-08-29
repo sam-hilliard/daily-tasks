@@ -26,7 +26,9 @@ function List() {
     }, []);
 
     function addGoal(goal) {
-        axios.post();
+        axios.post('/api/goals/', goal).then(response => {
+            setGoals([...goals, response.data]);
+        });
     }
 
     function deleteGoal(id) {

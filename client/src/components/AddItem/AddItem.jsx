@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 // material ui
 import Fab from '@material-ui/core/Fab';
@@ -20,14 +19,9 @@ function AddItem(props) {
     function handleSubmit(event) {
         event.preventDefault();
         if (inputText) {
-            const goal = {
-                id: uuidv4(),
-                name: inputText
-            }
-            
-            props.onAdd(goal);
+            props.onAdd({ name: inputText });
+            setInputText('');
         }
-        setInputText('');
     }
 
     return (
