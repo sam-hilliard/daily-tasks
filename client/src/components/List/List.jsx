@@ -21,14 +21,14 @@ function List() {
     const baseURL = '/api/goals';
 
     useEffect(() => {
-        axios.get(baseURL).then((response) => {
-            setGoals(response.data);
+        axios.get(baseURL).then(res => {
+            setGoals(res.data);
         });
     }, []);
 
     function addGoal(goal) {
-        axios.post(baseURL, goal).then(response => {
-            setGoals([...goals, response.data]);
+        axios.post(baseURL, goal).then(res => {
+            setGoals([...goals, res.data]);
         });
     }
 
@@ -51,7 +51,7 @@ function List() {
                         {goals.map((goal) => {
                             return(
                                 <Grid item key={goal._id}>
-                                    <ListItem id={goal._id} goalName={goal.name} onDelete={deleteGoal} />
+                                    <ListItem id={goal._id} goalName={goal.name} isComplete={goal.isComplete} onDelete={deleteGoal} />
                                 </Grid>
                             );
                         })}

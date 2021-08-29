@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 // material ui
 import Checkbox from '@material-ui/core/Checkbox';
@@ -27,10 +28,15 @@ const GreyChecbox = withStyles({
 
 function ListItem(props) {
 
-    const [done, setDone] = useState(false);
+    const [done, setDone] = useState(props.isComplete);
 
     function handleChange(event) {
-        setDone(event.target.checked);
+        const checked = event.target.checked;
+
+        axios.patch(`/api/goals/${props.id}`, { isComplete: checked })
+            .then((res) => {
+                setDone(res.data.isComplete);
+            });
     }
 
     function handleClick() {
