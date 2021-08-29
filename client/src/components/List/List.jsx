@@ -18,21 +18,24 @@ import './List.css'
 function List() {
 
     const [goals, setGoals] = useState([]);
+    const baseURL = '/api/goals';
 
     useEffect(() => {
-        axios.get('/api/goals').then((response) => {
+        axios.get(baseURL).then((response) => {
             setGoals(response.data);
         });
     }, []);
 
     function addGoal(goal) {
-        axios.post('/api/goals/', goal).then(response => {
+        axios.post(baseURL, goal).then(response => {
             setGoals([...goals, response.data]);
         });
     }
 
     function deleteGoal(id) {
-        
+        axios.delete(`${baseURL}/${id}`).then(() => {
+            setGoals(goals.filter(goal => goal._id !== id));
+        });
     }
 
     return(
