@@ -31,12 +31,10 @@ function ListItem(props) {
     const [done, setDone] = useState(props.isComplete);
 
     function handleChange(event) {
-        const checked = event.target.checked;
-
-        axios.patch(`/api/goals/${props.id}`, { isComplete: checked })
+        axios.patch(`/api/goals/${props.id}`, { isComplete: event.target.checked, dateCompleted: Date.now()})
             .then((res) => {
                 setDone(res.data.isComplete);
-            });
+        });
     }
 
     function handleClick() {

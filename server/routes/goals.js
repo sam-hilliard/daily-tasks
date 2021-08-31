@@ -40,6 +40,9 @@ router.patch('/:id', getGoal, async (req, res) => {
     if (req.body.streak != null) {
         res.goal.streak = req.body.streak;
     }
+    if (req.body.dateCompleted != null) {
+        res.goal.dateCompleted = req.body.dateCompleted;
+    }
 
     try {
         const updatedGoal = await res.goal.save();
