@@ -37,7 +37,6 @@ function ListItem(props) {
         });
 
         axios.patch(`/api/goals/${props.id}`, { 
-            dateCompleted: Date.now(),
             streak: streak
         });
 
@@ -49,6 +48,8 @@ function ListItem(props) {
 
         if (isChecked) {
             setStreak(streak + 1);
+        } else {
+            setStreak(streak - 1);
         }
     }
 

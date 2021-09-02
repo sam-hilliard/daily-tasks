@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 
 // material ui
 import FastForwardIcon from '@material-ui/icons/FastForward';
