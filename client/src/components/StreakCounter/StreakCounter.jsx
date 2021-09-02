@@ -7,14 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import './StreakCounter.css';
 
 
-function StreakCounter() {
-
-    const [days, setDays] = useState(0);
+function StreakCounter(props) {
 
     return(
         <div className="streak-counter">
             <FastForwardIcon />
-            <Typography>{days}</Typography>
+            <Typography>{props.streakCount}</Typography>
         </div>
     );
 }

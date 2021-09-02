@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // material ui
@@ -16,7 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import './ListItem.css';
 
-const GreyChecbox = withStyles({
+const GreyCheckbox = withStyles({
     root: {
       color: grey[400],
       '&$checked': {
@@ -28,13 +28,28 @@ const GreyChecbox = withStyles({
 
 function ListItem(props) {
 
-    const [done, setDone] = useState(props.isComplete);
+    const [checked, setChecked] = useState(props.isComplete);
+    const [streak, setStreak] = useState(props.streak);
+
+    useEffect(() => {
+        axios.patch(`/api/goals/${props.id}`, { 
+            isComplete: checked
+        });
+
+        axios.patch(`/api/goals/${props.id}`, { 
+            dateCompleted: Date.now(),
+            streak: streak
+        });
+
+    }, [checked, props.id, streak]);
 
     function handleChange(event) {
-        axios.patch(`/api/goals/${props.id}`, { isComplete: event.target.checked, dateCompleted: Date.now()})
-            .then((res) => {
-                setDone(res.data.isComplete);
-        });
+        const isChecked = event.target.checked;
+        setChecked(isChecked);
+
+        if (isChecked) {
+            setStreak(streak + 1);
+        }
     }
 
     function handleClick() {
@@ -42,12 +57,12 @@ function ListItem(props) {
     }
 
     return (
-        <div className={!done ? "item-body" : "item-body complete"}>
-            <GreyChecbox checked={done} onChange={handleChange} name="goal" />
+        <div className={checked ? "item-body complete" : "item-body"}>
+            <GreyCheckbox onChange={handleChange} name="goal" />
             <Typography>
                 {props.goalName}
             </Typography>
-            <StreakCounter />
+            <StreakCounter streakCount={streak}/>
             <IconButton aria-label="delete" onClick={handleClick}>
                 <DeleteIcon />
             </IconButton>

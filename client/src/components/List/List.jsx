@@ -51,7 +51,7 @@ function List() {
                         {goals.map((goal) => {
                             return(
                                 <Grid item key={goal._id}>
-                                    <ListItem id={goal._id} goalName={goal.name} isComplete={goal.isComplete} onDelete={deleteGoal} />
+                                    <ListItem id={goal._id} goalName={goal.name} streak={goal.streak} isComplete={goal.isComplete} onDelete={deleteGoal} />
                                 </Grid>
                             );
                         })}
