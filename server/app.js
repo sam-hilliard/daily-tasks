@@ -16,9 +16,6 @@ app.use(express.json());
 const goalsRouter = require('./routes/goals');
 app.use('/api/goals', goalsRouter);
 
-const dateRouter = require('./routes/dates');
-app.use('/api/dates', dateRouter);
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}.`);
 });

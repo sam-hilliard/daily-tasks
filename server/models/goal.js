@@ -14,6 +14,11 @@ const goalSchema = new mongoose.Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    date: {
+        type: Date,
+        required: true,
+        default: Date.now()
     }
 });
 
