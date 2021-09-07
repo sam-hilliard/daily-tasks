@@ -31,12 +31,14 @@ function ListItem(props) {
     const [checked, setChecked] = useState(props.isComplete);
     const [streak, setStreak] = useState(props.streak);
 
+    const baseURL = '/api/goals/';
+
     useEffect(() => {
-        axios.patch(`/api/goals/${props.id}`, { 
+        axios.patch(baseURL + props.id, { 
             isComplete: checked
         });
 
-        axios.patch(`/api/goals/${props.id}`, { 
+        axios.patch(baseURL + props.id, { 
             streak: streak
         });
 
@@ -59,7 +61,7 @@ function ListItem(props) {
 
     return (
         <div className={checked ? "item-body complete" : "item-body"}>
-            <GreyCheckbox onChange={handleChange} name="goal" />
+            <GreyCheckbox checked={checked} onChange={handleChange} name="goal" />
             <Typography>
                 {props.goalName}
             </Typography>

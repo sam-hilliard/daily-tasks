@@ -18,13 +18,30 @@ import './List.css'
 function List() {
 
     const [goals, setGoals] = useState([]);
-    const baseURL = '/api/goals';
+    const baseURL = '/api/goals/';
 
     useEffect(() => {
         axios.get(baseURL).then(res => {
             setGoals(res.data);
         });
-    }, []);
+
+        goals.forEach((goal) => {
+            if (isPast(goal.date)) {
+                const goalData = {
+                    date: new Date().toString()
+                }
+
+                if (goal.isComplete) {
+                    goalData['isComplete'] = false;
+                } else {
+                    goalData['streak'] = 0;
+                }
+
+                axios.patch(baseURL + goal._id, goalData);
+            }
+        });
+
+    }, [goals]);
 
     function addGoal(goal) {
         axios.post(baseURL, goal).then(res => {
@@ -33,9 +50,28 @@ function List() {
     }
 
     function deleteGoal(id) {
-        axios.delete(`${baseURL}/${id}`).then(() => {
+        axios.delete(baseURL + id).then(() => {
             setGoals(goals.filter(goal => goal._id !== id));
         });
+    }
+
+    function isPast(date) {
+        const curDate = new Date();
+        const goalDate = new Date(date);
+        
+        if (goalDate.getDay() !== curDate.getDay()) {
+            return true;
+        }
+
+        if (goalDate.getMonth() !== curDate.getMonth()) {
+            return true;
+        }
+
+        if (goalDate.getFullYear !== curDate.getFullYear()) {
+            return true;
+        }
+
+        return false;
     }
 
     return(
